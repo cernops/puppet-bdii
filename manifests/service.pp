@@ -1,4 +1,5 @@
 class bdii::service {
+
      service { "bdii":
               ensure     => running,
               enable     => true,
@@ -6,4 +7,5 @@ class bdii::service {
               hasrestart => true,
 	      require    => Class["bdii::config"],
       }
+
 }     

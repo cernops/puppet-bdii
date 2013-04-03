@@ -2,7 +2,6 @@ class bdii {
 
  case $::operatingsystem {
     RedHat,SLC,SL:   {
-         require afs,emi2repos,fetchcrl
          class {'bdii::install':}
          class {'bdii::config':}
          class {'bdii::service':}

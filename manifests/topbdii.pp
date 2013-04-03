@@ -1,10 +1,9 @@
 class bdii::topbdii {
 
-  $slapdconf = "/etc/bdii/bdii-top-slapd.conf"
+  Class[Bdii::Config] -> Class[Bdii::Topbdii]
 
   package { emi-bdii-top:
           ensure => present,
-          require => Class["emi2repos"],
       }
 
   $bdii_passwd=hiera("bdii_passwd",'secret')
@@ -13,17 +12,9 @@ class bdii::topbdii {
       content => template('bdii/glite-info-site-defaults.erb'),
       owner => 'root',
       group => 'root',
-      mode => '644',    
-      require => Class["bdii::config"],
+      mode => '644'
   }
 
-  file {"/etc/sysconfig/bdii":
-      content => template('bdii/bdiisysconf.erb'),
-      owner => 'root',
-      group => 'root',
-      mode => '644',
-     require => Class["bdii::config"],
-  }
   #file {"/etc/bdii/bdii-top-slapd.conf":
   #    content => template('bdii/bdii-slapd.erb'),
   #    owner => 'ldap',
