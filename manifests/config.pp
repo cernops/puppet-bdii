@@ -1,8 +1,8 @@
 class bdii::config (
   $log_level  = $bdii::params::log_level,
-  $port      = $bdii::params::port,
-  $user      = $bdii::params::user,
-  $slapdconf = $bdii::params::slapdconf
+  $port       = $bdii::params::port,
+  $user       = $bdii::params::user,
+  $slapdconf  = $bdii::params::slapdconf
 ) inherits bdii::params {
 
       Class[Bdii::Install] -> Class[Bdii::Config]

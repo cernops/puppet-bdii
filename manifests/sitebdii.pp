@@ -1,4 +1,4 @@
-class bdii::sitebdii {
+class bdii::sitebdii inherits bdii::params {
 
   Class[Bdii::Config] -> Class[Bdii::Sitebdii]
 
@@ -18,6 +18,7 @@ class bdii::sitebdii {
       group => 'root',
       mode => '644'
   }
+
   file {"/etc/bdii/gip/site-urls.conf":
       content => template('bdii/site_urls.erb'),
       owner => 'root',
@@ -26,4 +27,3 @@ class bdii::sitebdii {
   }
 
 }
-

@@ -31,9 +31,10 @@ SITE_SECURITY_EMAIL = <%= $sitesecuritymail %>
 SITE_SUPPORT_EMAIL = <%= sitesupportemail %>
 
 # Other info
-OTHERINFO = CONFIG=yaim
-OTHERINFO = EGEE_ROC=CERN
-OTHERINFO = EGEE_SERVICE=prod
-OTHERINFO = GRID=WLCG
-OTHERINFO = GRID=EGEE
-OTHERINFO = WLCG_TIER=0
+OTHERINFO = CONFIG=<%= config %>
+OTHERINFO = EGEE_ROC=<%= egeeroc %>
+OTHERINFO = EGEE_SERVICE=<%= egeeservice %>
+<% grid.each do |grid| -%>
+OTHERINFO = GRID=<%= grid %>
+<% end -%>
+OTHERINFO = WLCG_TIER=<%= wlcgtier %>
