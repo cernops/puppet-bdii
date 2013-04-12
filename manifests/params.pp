@@ -6,7 +6,6 @@ class bdii::params {
   $slapdconf   = hiera("slapdconf","/etc/bdii/bdii-slapd.conf")
   $selinux     = hiera("selinux",true)
   $bdiipasswd  = hiera("bdiipasswd",randompass())
-  $bdiipasswd  = hiera("bdiipasswd",randompass())
   $bdiihost    = hiera("bdiihost","somehost.example.com")
 
   # site specific stuff:
