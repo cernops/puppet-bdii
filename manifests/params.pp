@@ -5,7 +5,7 @@ class bdii::params {
   $user        = hiera("user","ldap")
   $slapdconf   = hiera("slapdconf","/etc/bdii/bdii-slapd.conf")
   $selinux     = hiera("selinux",true)
-  $bdiipasswd  = hiera("bdii_passwd",randompass())
+  $bdiipasswd  = hiera("bdiipasswd",randompass())
 
 
   # site specific stuff:

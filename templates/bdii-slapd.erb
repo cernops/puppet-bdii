@@ -112,6 +112,7 @@ dbnosync
 suffix          "o=infosys"
 checkpoint      1024 10
 rootdn          "o=infosys"
-rootpw          <% 8.times{ print (65 + rand(25)).chr} %>
+#rootpw          <% 8.times{ print (65 + rand(25)).chr} %>
+rootpw          <%= bdiipasswd %>
 directory       /var/run/bdii/db/stats
 loglevel 256
