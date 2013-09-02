@@ -1,40 +1,40 @@
 # Site name, a domain name.
-SITE_NAME = <%= sitename %>
+SITE_NAME = <%= @sitename %>
 
 # Optional description of the site
-SITE_DESC = <%= sitedesc %>
+SITE_DESC = <%= @sitedesc %>
 
 # Optional web address in full URL format. E.g.: http://www.cern.ch/gridinfo
-SITE_WEB = <%= siteweb %>
+SITE_WEB = <%= @siteweb %>
 
 # New optional GLUE 2.0 parameter to identify if the site is geographically distributed
 # true or false
-SITE_DISTRIBUTED = <%= sitedistributed %>
+SITE_DISTRIBUTED = <%= @sitedistributed %>
 
 # Location of the site
-SITE_LOC = <%= siteloc %>
-SITE_COUNTRY =  <%= sitecountry %>
+SITE_LOC = <%= @siteloc %>
+SITE_COUNTRY =  <%= @sitecountry %>
 
 # Latitude
-SITE_LAT = <%= sitelat %>
+SITE_LAT = <%= @sitelat %>
 
 # Longitude
-SITE_LONG = <%= sitelong %>
+SITE_LONG = <%= @sitelong %>
 
 # Contact email
-SITE_EMAIL = <%= siteemail %>
+SITE_EMAIL = <%= @siteemail %>
 
 # Security email
-SITE_SECURITY_EMAIL = <%= $sitesecuritymail %>
+SITE_SECURITY_EMAIL = <%= @sitesecuritymail %>
 
 # User support email
-SITE_SUPPORT_EMAIL = <%= sitesupportemail %>
+SITE_SUPPORT_EMAIL = <%= @sitesupportemail %>
 
 # Other info
-OTHERINFO = CONFIG=<%= config %>
-OTHERINFO = EGEE_ROC=<%= egeeroc %>
-OTHERINFO = EGEE_SERVICE=<%= egeeservice %>
+OTHERINFO = CONFIG=<%= @config %>
+OTHERINFO = EGEE_ROC=<%= @egeeroc %>
+OTHERINFO = EGEE_SERVICE=<%= @egeeservice %>
 <% grid.each do |grid| -%>
-OTHERINFO = GRID=<%= grid %>
+OTHERINFO = GRID=<%= @grid %>
 <% end -%>
-OTHERINFO = WLCG_TIER=<%= wlcgtier %>
+OTHERINFO = WLCG_TIER=<%= @wlcgtier %>
