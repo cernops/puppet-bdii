@@ -12,28 +12,31 @@ class bdii::config (
          owner   => 'root',
          group   => 'root',
          mode    => '644',
-         notify  => Class["bdii::service"]
+         notify  => Class["bdii::service"],
+         loglevel => err,
       }
 
       file { "/etc/bdii/gip":
         ensure => "directory",
         owner  => "root",
         group  => "root",
-        mode   => 755
+        mode   => 755,
+        loglevel => err,
       }
 
       file { "/var/lib/bdii/db":
         ensure => "directory",
         owner  => "ldap",
         group  => "ldap",
-        mode   => 755
+        mode   => 755,
+        loglevel => err,
       }
 
       file {"/etc/sysconfig/bdii":
         content => template('bdii/bdiisysconf.erb'),
         owner => 'root',
         group => 'root',
-        mode => '644'
+        mode => '644',
+        loglevel => err,    
       }
-
 }

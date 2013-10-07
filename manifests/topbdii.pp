@@ -10,7 +10,8 @@ class bdii::topbdii inherits bdii::params {
       content => template('bdii/glite-info-site-defaults.erb'),
       owner => 'root',
       group => 'root',
-      mode => '644'
+      mode => '644',
+      loglevel => err,
   }
 }
   

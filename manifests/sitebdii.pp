@@ -10,20 +10,23 @@ class bdii::sitebdii inherits bdii::params {
       content => template('bdii/site.erb'),
       owner => 'root',
       group => 'root',
-      mode => '644'
+      mode => '644',
+      loglevel => err,
+
   }
   file {"/etc/bdii/gip/glite-info-site-defaults.conf":
       content => template('bdii/glite-info-site-defaults-site.erb'),
       owner => 'root',
       group => 'root',
-      mode => '644'
+      mode => '644',
+      loglevel => err,
   }
 
   file {"/etc/bdii/gip/site-urls.conf":
       content => template('bdii/site_urls.erb'),
       owner => 'root',
       group => 'root',
-      mode => '644'
+      mode => '644',
+      loglevel => err,  
   }
-
 }
