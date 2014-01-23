@@ -1,4 +1,4 @@
-name    'bdii'
+name    'CERNOps-bdii'
 version '0.0.1'
 author 'schwicke'
 license 'Apache License, Version 2.0 (the "License")'
