@@ -2,7 +2,8 @@ class bdii::config (
   $log_level  = $bdii::params::log_level,
   $port       = $bdii::params::port,
   $user       = $bdii::params::user,
-  $slapdconf  = $bdii::params::slapdconf
+  $slapdconf  = $bdii::params::slapdconf,
+  $loglevel   = undef,
 ) inherits bdii::params {
 
       Class[Bdii::Install] -> Class[Bdii::Config]
@@ -13,7 +14,7 @@ class bdii::config (
          group   => 'root',
          mode    => '644',
          notify  => Class["bdii::service"],
-         loglevel => err,
+         loglevel => $loglevel,
       }
 
       file { "/etc/bdii/gip":
@@ -21,7 +22,7 @@ class bdii::config (
         owner  => "root",
         group  => "root",
         mode   => 755,
-        loglevel => err,
+        loglevel => $loglevel,
       }
 
       file { "/var/lib/bdii/db":
@@ -29,7 +30,7 @@ class bdii::config (
         owner  => "ldap",
         group  => "ldap",
         mode   => 755,
-        loglevel => err,
+        loglevel => $loglevel,
       }
 
       file {"/etc/sysconfig/bdii":
@@ -37,6 +38,6 @@ class bdii::config (
         owner => 'root',
         group => 'root',
         mode => '644',
-        loglevel => err,    
+        loglevel => $loglevel,    
       }
 }
