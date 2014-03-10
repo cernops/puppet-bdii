@@ -1,7 +1,7 @@
 class bdii {
 
  case $::operatingsystem {
-    RedHat,SLC,SLScientific:   {
+    RedHat,SLC,SL,Scientific:   {
          class {'bdii::install':}
          class {'bdii::config':}
          class {'bdii::service':}
