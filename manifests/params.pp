@@ -1,15 +1,16 @@
 class bdii::params {
  
-  $log_level   = hiera("bdii::params::log_level","DEBUG")
-  $port        = hiera("bdii::params::port","2170")
-  $user        = hiera("bdii::params::user","ldap")
-  $slapdconf   = hiera("bdii::params::slapdconf","/etc/bdii/bdii-slapd.conf")
-  $selinux     = hiera("bdii::params::selinux",True)
-  $bdiipasswd  = hiera("bdii::params::bdiipasswd",randompass())
-  $bdiihost    = hiera("bdii::params::bdiihost","somehost.example.com")
-  $bdiideletedelay = hiera("bdiideletedelay", "43200")
+  $log_level            = hiera("bdii::params::log_level","DEBUG")
+  $port                 = hiera("bdii::params::port","2170")
+  $user                 = hiera("bdii::params::user","ldap")
+  $slapdconf            = hiera("bdii::params::slapdconf","/etc/bdii/bdii-slapd.conf")
+  $selinux              = hiera("bdii::params::selinux",True)
+  $bdiipasswd           = hiera("bdii::params::bdiipasswd",randompass())
+  $bdiihost             = hiera("bdii::params::bdiihost","somehost.example.com")
+  $bdiideletedelay      = hiera("bdii::params::deletedelay", "43200")
 
   # site specific stuff:
+  $sitedeletedelay       =  hiera("bdii::params::sitedeletedelay", "0")
   $siteurls              =  hiera("bdii::params::siteurls","# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid")
   $sitename              =  hiera("bdii::params::sitename","somesite")      
   $sitebdiihost          =  hiera("bdii::params::sitebdiihost","somehost.example.com") 
