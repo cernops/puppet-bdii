@@ -24,6 +24,10 @@ class bdii::sitebdii(
 
   Class[Bdii::Config] -> Class[Bdii::Sitebdii]
 
+  class {"bdii::config":
+    delete_delay => $bdii::params::sitedeletedelay,
+  }
+
   package { emi-bdii-site:
           ensure => present,
       }

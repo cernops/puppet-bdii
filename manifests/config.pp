@@ -1,8 +1,9 @@
 class bdii::config (
-  $log_level  = $bdii::params::log_level,
-  $port       = $bdii::params::port,
-  $user       = $bdii::params::user,
-  $slapdconf  = $bdii::params::slapdconf,
+  $log_level    = $bdii::params::log_level,
+  $port         = $bdii::params::port,
+  $user         = $bdii::params::user,
+  $slapdconf    = $bdii::params::slapdconf,
+  $delete_delay = $bdii::params::bdiideletedelay,
   $loglevel   = undef,
 ) inherits bdii::params {
 

@@ -2,6 +2,10 @@ class bdii::topbdii inherits bdii::params {
 
   Class[Bdii::Config] -> Class[Bdii::Topbdii]
 
+  class{"bdii::config":
+    delete_delay => $bdii::params::bdiideletedelay,
+  }
+
   package { emi-bdii-top:
           ensure => present,
       }
