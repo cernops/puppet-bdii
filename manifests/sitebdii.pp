@@ -24,15 +24,6 @@ class bdii::sitebdii(
 
   Class[Bdii::Config] -> Class[Bdii::Sitebdii]
 
-  if defined( Class["bdii"]) {
-    fail("Do not include / declare top level bdii class when using bdii::sitebdii")
-  }
-  include bdii::install
-  include bdii::firewall
-  class {"bdii::config":
-    delete_delay => $bdii::params::sitedeletedelay,
-  }
-
   package { emi-bdii-site:
           ensure => present,
       }

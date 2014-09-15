@@ -7,10 +7,9 @@ class bdii::params {
   $selinux              = hiera("bdii::params::selinux",True)
   $bdiipasswd           = hiera("bdii::params::bdiipasswd",randompass())
   $bdiihost             = hiera("bdii::params::bdiihost","somehost.example.com")
-  $bdiideletedelay      = hiera("bdii::params::deletedelay", "43200")
+  $bdiideletedelay      = hiera("bdii::params::deletedelay", "0")
 
   # site specific stuff:
-  $sitedeletedelay       =  hiera("bdii::params::sitedeletedelay", "0")
   $siteurls              =  hiera("bdii::params::siteurls","# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid")
   $sitename              =  hiera("bdii::params::sitename","somesite")      
   $sitebdiihost          =  hiera("bdii::params::sitebdiihost","somehost.example.com") 
