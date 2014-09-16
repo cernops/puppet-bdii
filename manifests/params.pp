@@ -8,6 +8,8 @@ class bdii::params {
   $bdiipasswd           = hiera("bdii::params::bdiipasswd",randompass())
   $bdiihost             = hiera("bdii::params::bdiihost","somehost.example.com")
   $bdiideletedelay      = hiera("bdii::params::deletedelay", "0")
+  $slapdthreads         = hiera("bdii::params::slapdthreads", "16")
+  $slapdloglevel        = hiera("bdii::params::slapdloglevel", "0")
 
   # site specific stuff:
   $siteurls              =  hiera("bdii::params::siteurls","# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid")
