@@ -1,3 +1,7 @@
 2012-11-06 Ulrich Schwickerath <ulrich.schwickerath@cern.ch>
 
     * First Release
+
+2014-09-19 Ben jones <ben.jones@cern.ch>
+
+    * Allow configuration of variables such as loglevel in sub bddi classes
