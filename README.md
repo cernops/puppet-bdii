@@ -6,7 +6,7 @@ Synopsis
 
 Manage the BDII grid information system.
 
-Documentation for BDII is available [http://gridinfo.web.cern.ch](here)
+Documentation for BDII is available [here](http://gridinfo.web.cern.ch])
 
 To use a bdii resource, it should be enough to simply:
 
