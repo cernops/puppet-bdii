@@ -2,10 +2,6 @@ class bdii::sambdii inherits bdii::params {
 
   Class[Bdii::Config] -> Class[Bdii::Sambdii]
 
-  class {"bdii::config":
-    delete_delay => $bdii::params::sitedeletedelay,
-  } 
-
   package { "emi-bdii-top":
           ensure => present,
   }

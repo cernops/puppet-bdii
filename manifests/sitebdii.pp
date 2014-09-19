@@ -1,5 +1,5 @@
 class bdii::sitebdii(
-  #this allows to override specific params not only relying on hiera, for sites which have subsite BDIIs, whishing to use hiera both for site and subsite
+  #this allows to override specific params not only relying on hiera, for sites which have subsite BDIIs, wishing to use hiera both for site and subsite
   $siteurls              =  $bdii::params::siteurls,
   $sitename              =  $bdii::params::sitename,
   $sitebdiihost          =  $bdii::params::sitebdiihost,
@@ -23,10 +23,6 @@ class bdii::sitebdii(
 ) inherits bdii::params {
 
   Class[Bdii::Config] -> Class[Bdii::Sitebdii]
-
-  class {"bdii::config":
-    delete_delay => $bdii::params::sitedeletedelay,
-  }
 
   package { emi-bdii-site:
           ensure => present,
