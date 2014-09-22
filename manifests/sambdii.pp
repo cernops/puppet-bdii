@@ -5,9 +5,6 @@ class bdii::sambdii inherits bdii::params {
   package { "emi-bdii-top":
           ensure => present,
   }
-  package { "glite-info-plugin-fcr":
-    ensure => present,
-  }
 
   file {"/etc/bdii/gip/glite-info-site-defaults.conf":
       content => template('bdii/glite-info-site-defaults.erb'),
