@@ -41,4 +41,16 @@ class bdii::config (
         mode => '644',
         loglevel => $loglevel,    
       }
+
+      file_line{ 'slapd_threads':
+        path => $slapdconf,
+        match => "^\s*threads",
+        line => "threads          ${bdii::params::slapdthreads}",
+      }
+
+      file_line{ 'slapd_loglevel':
+        path => $slapdconf,
+        match => "^\s*loglevel",
+        line  => "loglevel       ${bdii::params::slapdloglevel}",
+      }
 }
