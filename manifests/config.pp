@@ -13,7 +13,7 @@ class bdii::config (
          content => template('bdii/bdiiconf.erb'),
          owner   => 'root',
          group   => 'root',
-         mode    => '644',
+         mode    => '0644',
          notify  => Class["bdii::service"],
          loglevel => $loglevel,
       }
@@ -22,7 +22,7 @@ class bdii::config (
         ensure => "directory",
         owner  => "root",
         group  => "root",
-        mode   => 755,
+        mode   => '0755',
         loglevel => $loglevel,
       }
 
@@ -30,7 +30,7 @@ class bdii::config (
         ensure => "directory",
         owner  => "ldap",
         group  => "ldap",
-        mode   => 755,
+        mode   => '0755',
         loglevel => $loglevel,
       }
 
@@ -38,7 +38,7 @@ class bdii::config (
         content => template('bdii/bdiisysconf.erb'),
         owner => 'root',
         group => 'root',
-        mode => '644',
+        mode => '0644',
         loglevel => $loglevel,    
       }
 
