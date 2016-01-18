@@ -1,6 +1,6 @@
 class bdii::sambdii inherits bdii::params {
 
-  Class[Bdii::Config] -> Class[Bdii::Sambdii]
+  Class[bdii::config] -> Class[bdii::sambdii]
 
   package { "emi-bdii-top":
           ensure => present,

@@ -7,7 +7,7 @@ class bdii::config (
   $loglevel   = undef,
 ) inherits bdii::params {
 
-      Class[Bdii::Install] -> Class[Bdii::Config]
+      Class[bdii::install] -> Class[bdii::config]
 
       file {"/etc/bdii/bdii.conf":
          content => template('bdii/bdiiconf.erb'),

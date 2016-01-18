@@ -1,6 +1,6 @@
 class bdii::topbdii inherits bdii::params {
 
-  Class[Bdii::Config] -> Class[Bdii::Topbdii]
+  Class[bdii::config] -> Class[bdii::topbdii]
 
   package { emi-bdii-top:
           ensure => present,

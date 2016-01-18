@@ -22,7 +22,7 @@ class bdii::sitebdii(
   
 ) inherits bdii::params {
 
-  Class[Bdii::Config] -> Class[Bdii::Sitebdii]
+  Class[bdii::config] -> Class[bdii::sitebdii]
 
   package { emi-bdii-site:
           ensure => present,
