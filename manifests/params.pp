@@ -4,7 +4,7 @@ class bdii::params {
   $port                 = hiera("bdii::params::port","2170")
   $user                 = hiera("bdii::params::user","ldap")
   $slapdconf            = hiera("bdii::params::slapdconf","/etc/bdii/bdii-slapd.conf")
-  $selinux              = hiera("bdii::params::selinux",True)
+  $selinux              = hiera("bdii::params::selinux",true)
   $bdiipasswd           = hiera("bdii::params::bdiipasswd",randompass())
   $bdiihost             = hiera("bdii::params::bdiihost","somehost.example.com")
   $bdiideletedelay      = hiera("bdii::params::deletedelay", "0")
