@@ -1,0 +1,45 @@
+# Site name, a domain name.
+SITE_NAME = <%= @sitename %>
+
+# Optional description of the site
+SITE_DESC = <%= @sitedesc %>
+
+# Optional web address in full URL format. E.g.: http://www.cern.ch/gridinfo
+SITE_WEB = <%= @siteweb %>
+
+# New optional GLUE 2.0 parameter to identify if the site is geographically distributed
+# true or false
+SITE_DISTRIBUTED = <%= @sitedistributed %>
+
+# Location of the site
+SITE_LOC = <%= @siteloc %>
+SITE_COUNTRY =  <%= @sitecountry %>
+
+# Latitude
+SITE_LAT = <%= @sitelat %>
+
+# Longitude
+SITE_LONG = <%= @sitelong %>
+
+# Contact email
+SITE_EMAIL = <%= @siteemail %>
+
+# Security email
+SITE_SECURITY_EMAIL = <%= @sitesecuritymail %>
+
+# User support email
+SITE_SUPPORT_EMAIL = <%= @sitesupportemail %>
+
+# Other info
+OTHERINFO = CONFIG=<%= @config %>
+OTHERINFO = EGEE_ROC=<%= @egeeroc %>
+OTHERINFO = EGEE_SERVICE=<%= @egeeservice %>
+<% grid.each do |g| -%>
+OTHERINFO = GRID=<%= g %>
+<% end -%>
+OTHERINFO = WLCG_TIER=<%= @wlcgtier %>
+
+#free other info
+<% @otherinfo.each do |o| -%>
+OTHERINFO = <%= o %>
+<% end -%>
