@@ -1,0 +1,28 @@
+{
+ "name": "CERNOps-bdii",
+ "version": "0.0.0",
+ "author": "CERNOps",
+ "summary": "Configures things ...",
+ "license": "Apache-2.0",
+ "source": "https://gitlab.cern.ch/ai/it-puppet-module-bdii",
+ "dependencies": [
+ ],
+ "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+ ]
+}
