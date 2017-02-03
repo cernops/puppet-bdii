@@ -1,0 +1,76 @@
+---
+
+# For reference the following ENV are uses in this file.
+# CI_REGISTRY_IMAGE, e.g. gitlab-registry.cern.ch/ai/it-puppet-module-ci_images
+# CI_BUILD_REF_NAME, e.g. qa , branch name.
+# AI_CI_SSH_KEY, contains a private key for fetching deps.
+
+stages:
+  - images
+  - tests
+
+# Only in the it-puppet-module-ci_images is the docker image actually created.
+# In all other repositories we simply skip this and use the image
+# created in it-puppet-module-ci_images, this can be overridden
+# via msync.
+
+cc7-puppet-ci:
+  stage: images
+  tags:
+    - docker-image-build
+  only:
+    - branches@ai/it-puppet-module-ci_images
+  script: ""
+  variables:
+    CONTEXT_DIR: .
+    DOCKER_FILE: ci/Dockerfile
+    FROM:    gitlab-registry.cern.ch/linuxsupport/cc7-base
+    TO:      ${CI_REGISTRY_IMAGE}:cc7-puppet-ci-${CI_BUILD_REF_NAME}
+
+
+before_script:
+  - '[ -n "${AI_CI_SSH_KEY}" ] && eval $(ssh-agent -s)'
+  - '[ -n "${AI_CI_SSH_KEY}" ] && ssh-add <(echo "$AI_CI_SSH_KEY")'
+
+puppet3:
+  stage: tests
+  tags:
+   - docker
+  image: gitlab-registry.cern.ch/ai/it-puppet-module-ci_images:cc7-puppet-ci-master
+  script:
+    - cd code
+    - rm -f ../ci/Gemfile.lock
+    - BUNDLE_GEMFILE=../ci/Gemfile PUPPET_VERSION='~> 3.0' bundle install --local --without system_tests development
+    - LANG=en_US.UTF-8 BUNDLE_GEMFILE=../ci/Gemfile PUPPET_VERSION='~> 3.0' bundle exec rake --rakefile ../ci/Rakefile test
+
+puppet4:
+  stage: tests
+  tags:
+   - docker
+  image: gitlab-registry.cern.ch/ai/it-puppet-module-ci_images:cc7-puppet-ci-master
+  script:
+    - cd code
+    - rm -f ../ci/Gemfile.lock
+    - BUNDLE_GEMFILE=../ci/Gemfile PUPPET_VERSION='~> 4.8.0' bundle install --local --without system_tests development
+    - LANG=en_US.UTF-8 BUNDLE_GEMFILE=../ci/Gemfile PUPPET_VERSION='~> 4.8.0' bundle exec rake --rakefile ../ci/Rakefile test 
+
+puppet4_latest:
+  stage: tests
+  tags:
+   - docker
+  image: gitlab-registry.cern.ch/ai/it-puppet-module-ci_images:cc7-puppet-ci-master
+  script:
+    - cd code
+    - rm -f ../ci/Gemfile.lock
+    - BUNDLE_GEMFILE=../ci/Gemfile PUPPET_VERSION='~> 4.0' bundle install --local --without system_tests development
+    - LANG=en_US.UTF-8 BUNDLE_GEMFILE=../ci/Gemfile PUPPET_VERSION='~> 4.0' bundle exec rake --rakefile ../ci/Rakefile test 
+  allow_failure: true
+
+yaml-validate:
+  stage: tests
+  tags:
+   - docker
+  image: gitlab-registry.cern.ch/ai/it-puppet-module-ci_images:cc7-puppet-ci-master
+  script:
+    - if [ -d data ] ; then yaml-lint data ; else true; fi
+    - if [ -f .sync.yml ] ; then yaml-lint .sync.yml ; else true; fi
