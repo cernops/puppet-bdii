@@ -1,15 +1,13 @@
 # maintained by modulesync
-code/pkg/
-code/Gemfile.lock
-code/vendor/
-code/spec/fixtures/
-code/.vagrant/
-code/.bundle/
-code/coverage/
-code/log/
-code/.idea/
-code/*.iml
-code/.*.sw
-ci/.bundle
+pkg/
+Gemfile.lock
+vendor/
+spec/fixtures/
+.vagrant/
+.bundle/
+coverage/
+log/
+.idea/
+*.iml
+.*.sw
 *.swp
-ci/Gemfile.lock
