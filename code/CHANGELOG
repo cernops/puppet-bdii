@@ -5,3 +5,7 @@
 2014-09-19 Ben jones <ben.jones@cern.ch>
 
     * Allow configuration of variables such as loglevel in sub bddi classes
+
+2017-02-07 Lorena Lobato Pardavila <lorena.lobato@cern.ch>
+
+    * BDII module adapted to puppet4
