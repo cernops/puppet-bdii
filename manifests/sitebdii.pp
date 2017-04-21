@@ -22,10 +22,10 @@ class bdii::sitebdii(
 
 ) inherits bdii::params {
 
-  Class[Bdii::Config] -> Class[Bdii::Sitebdii]
+  Class['bdii::config'] -> Class['bdii::sitebdii']
 
   package { 'emi-bdii-site':
-          ensure => present,
+          ensure => 'present',
       }
 
   file {'/etc/glite-info-static/site/site.cfg':

@@ -13,11 +13,11 @@ allow bind_v2
 
 pidfile         /var/run/bdii/db/slapd.pid
 argsfile        /var/run/bdii/db/slapd.args
-loglevel        <%= slapdloglevel %>
+loglevel        <%= @slapdloglevel %>
 idletimeout     120
 sizelimit       unlimited
 timelimit       2400
-threads         <%= slapdthreads %>
+threads         <%= @slapdthreads %>
 
 moduleload rwm
 moduleload back_relay
@@ -114,6 +114,6 @@ suffix          "o=infosys"
 checkpoint      1024 10
 rootdn          "o=infosys"
 #rootpw          <% 8.times{ print (65 + rand(25)).chr} %>
-rootpw          <%= bdiipasswd %>
+rootpw          <%= @bdiipasswd %>
 directory       /var/run/bdii/db/stats
 loglevel 256
