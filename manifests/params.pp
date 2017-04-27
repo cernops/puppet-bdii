@@ -3,7 +3,7 @@ class bdii::params {
   $port                 = hiera('bdii::params::port','2170')
   $user                 = hiera('bdii::params::user','ldap')
   $slapdconf            = hiera('bdii::params::slapdconf','/etc/bdii/bdii-slapd.conf')
-  $selinux              = hiera('bdii::params::selinux',true)
+  $selinux              = hiera('bdii::params::selinux',false)
   $bdiipasswd           = hiera('bdii::params::bdiipasswd',randompass())
   $bdiihost             = hiera('bdii::params::bdiihost','somehost.example.com')
   $bdiideletedelay      = hiera('bdii::params::deletedelay', '0')
@@ -12,7 +12,7 @@ class bdii::params {
   # site specific stuff:
   $siteurls             =  hiera('bdii::params::siteurls','# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid')
   $sitename             =  hiera('bdii::params::sitename','somesite')
-  $sitebdiiost          =  hiera('bdii::params::sitebdiihost','somehost.example.com')
+  $sitebdiihost          =  hiera('bdii::params::sitebdiihost','somehost.example.com')
   $sitedesc             =  hiera('bdii::params::sitedesc','somesite descr')
   $siteweb              =  hiera('bdii::params::siteweb','www.somesite.example.com')
   $sitedistributed      =  hiera('bdii::params::sitedistributed','')

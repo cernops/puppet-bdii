@@ -2,10 +2,10 @@ class bdii::topbdii inherits bdii::params {
 
   include ::bdii
 
-  Class[Bdii::Config] -> Class[Bdii::Topbdii]
+  Class['bdii::config'] -> Class['bdii::topbdii']
 
   package { 'emi-bdii-top':
-          ensure => present,
+          ensure => 'present',
       }
 
   file {'/etc/bdii/gip/glite-info-site-defaults.conf':
