@@ -2,9 +2,9 @@
   "summary": "Manages BDII servers",
   "name": "CERNOps-bdii",
   "author": "CERNOps",
-  "project_page": "https://github.com/cvmfs/puppet-bdii",
+  "project_page": "https://github.com/cernops/puppet-bdii",
   "version": "0.2.1",
-  "source": "https://github.com/cvmfs/puppet-bdii",
+  "source": "https://github.com/cernops/puppet-bdii",
   "license": "Apache-2.0",
   "dependencies": [
     {
