@@ -16,10 +16,10 @@ matrix:
   include:
   - rvm: 2.1.9
     bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 4.0" CHECK=test PARALLEL_TEST_PROCESSORS=16
+    env: PUPPET_VERSION="~> 4.0" CHECK=build PARALLEL_TEST_PROCESSORS=16
   - rvm: 2.4.2
     bundler_args: --without system_tests development release
-    env: PUPPET_VERSION="~> 5.0" CHECK=test_with_coveralls
+    env: PUPPET_VERSION="~> 5.0" CHECK=build
   - rvm: 2.4.2
     bundler_args: --without system_tests development release
     env: PUPPET_VERSION="~> 5.0" CHECK=build DEPLOY_TO_FORGE=yes 
@@ -31,5 +31,5 @@ deploy:
     secure: SDBqin7XVo1T71UQ3hI4N19e177kkdpwwttFHY8ypw2VqqoJsr0H6awaB00ZU9WH/54grKDaaDbigRpd2uvWVwt91ru9jUp6Cdp5dCkes99Zl5bo5BhzDMtNZlDf4qSt7ZU/s02a5c1JxNGlVYgDWuVA5kl9soNBZ34/KB7ZrIM=
   on:
     tags: true
-    all_branches: true
+    all_branches: false
     condition: "$DEPLOY_TO_FORGE = yes"
