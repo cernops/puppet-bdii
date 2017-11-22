@@ -9,16 +9,16 @@ class bdii::config (
 
       Class[bdii::install] -> Class[bdii::config]
 
-      file {"/etc/bdii/bdii.conf":
-         content => template('bdii/bdiiconf.erb'),
-         owner   => 'root',
-         group   => 'root',
-         mode    => '0644',
-         notify  => Class["bdii::service"],
-         loglevel => $loglevel,
+      file {'/etc/bdii/bdii.conf':
+        content => template('bdii/bdiiconf.erb'),
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        notify  => Class["bdii::service"],
+        loglevel => $loglevel,
       }
 
-      file { "/etc/bdii/gip":
+      file { '/etc/bdii/gip':
         ensure => "directory",
         owner  => "root",
         group  => "root",
@@ -26,7 +26,7 @@ class bdii::config (
         loglevel => $loglevel,
       }
 
-      file { "/var/lib/bdii/db":
+      file { '/var/lib/bdii/db':
         ensure => "directory",
         owner  => "ldap",
         group  => "ldap",
@@ -34,7 +34,7 @@ class bdii::config (
         loglevel => $loglevel,
       }
 
-      file {"/etc/sysconfig/bdii":
+      file {'/etc/sysconfig/bdii":
         content => template('bdii/bdiisysconf.erb'),
         owner => 'root',
         group => 'root',
