@@ -1,6 +1,13 @@
 puppet-bdii
 ===========
 
+[![Build Status](https://travis-ci.org/cernops/puppet-bdii.png?branch=master)](https://travis-ci.org/cernops/puppet-bdii)
+[![Code Coverage](https://coveralls.io/repos/github/cernops/puppet-bdii/badge.svg?branch=master)](https://coveralls.io/github/cernops/puppet-bdii)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/bdii.svg)](https://forge.puppetlabs.com/puppet/bdii)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/bdii.svg)](https://forge.puppetlabs.com/puppet/bdii)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/bdii.svg)](https://forge.puppetlabs.com/puppet/bdii)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/bdii.svg)](https://forge.puppetlabs.com/puppet/bdii)
+
 Synopsis
 --------
 
