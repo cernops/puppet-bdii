@@ -34,7 +34,7 @@ class bdii::config (
         loglevel => $loglevel,
       }
 
-      file {'/etc/sysconfig/bdii":
+      file {'/etc/sysconfig/bdii':
         content => template('bdii/bdiisysconf.erb'),
         owner => 'root',
         group => 'root',
