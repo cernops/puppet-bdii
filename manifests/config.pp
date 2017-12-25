@@ -1,21 +1,24 @@
 class bdii::config (
-  $log_level    = $bdii::params::log_level,
-  $port         = $bdii::params::port,
-  $user         = $bdii::params::user,
-  $slapdconf    = $bdii::params::slapdconf,
-  $delete_delay = $bdii::params::bdiideletedelay,
-  $loglevel   = undef,
+  $log_level            = $bdii::log_level,
+  $port                 = $bdii::port,
+  $user                 = $bdii::user,
+  $slapdconf            = $bdii::slapdconf,
+  $slapdloglevel        = $bdii::slapdloglevel,
+  $slapdthreads         = $bdii::slapdthreads,
+  $delete_delay         = $bdii::deletedelay,
+  $ramsize              = $bdii::ramsize,
+  $template_config      = $bdii::template_config,
+  $template_sysconfig   = $bdii::template_sysconfig,
 ) inherits bdii::params {
 
       Class[bdii::install] -> Class[bdii::config]
 
       file {'/etc/bdii/bdii.conf':
-        content  => template('bdii/bdiiconf.erb'),
+        content  => template($template_config),
         owner    => 'root',
         group    => 'root',
         mode     => '0644',
         notify   => Class['bdii::service'],
-        loglevel => $loglevel,
       }
 
       file { '/etc/bdii/gip':
@@ -23,7 +26,6 @@ class bdii::config (
         owner    => 'root',
         group    => 'root',
         mode     => '0755',
-        loglevel => $loglevel,
       }
 
       file { '/var/lib/bdii/db':
@@ -31,26 +33,13 @@ class bdii::config (
         owner    => 'ldap',
         group    => 'ldap',
         mode     => '0755',
-        loglevel => $loglevel,
       }
 
       file {'/etc/sysconfig/bdii':
-        content  => template('bdii/bdiisysconf.erb'),
+        content  => template($template_sysconfig),
         owner    => 'root',
         group    => 'root',
         mode     => '0644',
-        loglevel => $loglevel,
-      }
-
-      file_line{ 'slapd_threads':
-        path  => $slapdconf,
-        match => '^\s*threads',
-        line  => "threads          ${bdii::params::slapdthreads}",
-      }
-
-      file_line{ 'slapd_loglevel':
-        path  => $slapdconf,
-        match => '^\s*loglevel',
-        line  => "loglevel       ${bdii::params::slapdloglevel}",
+        notify   => Class['bdii::service'],
       }
 }

@@ -1,6 +1,4 @@
-class bdii::install (
-  $selinux = $bdii::params::selinux
-) inherits bdii::params {
+class bdii::install {
 
   package { 'bdii':
     ensure => present,
