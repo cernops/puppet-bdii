@@ -9,7 +9,7 @@ class bdii::config (
   $ramsize              = $bdii::ramsize,
   $template_config      = $bdii::template_config,
   $template_sysconfig   = $bdii::template_sysconfig,
-) inherits bdii::params {
+) {
 
       Class[bdii::install] -> Class[bdii::config]
 

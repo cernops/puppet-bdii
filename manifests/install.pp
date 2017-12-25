@@ -1,4 +1,6 @@
-class bdii::install {
+class bdii::install (
+  $selinux              = $bdii::selinux,
+) {
 
   package { 'bdii':
     ensure => present,

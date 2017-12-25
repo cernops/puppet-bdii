@@ -6,7 +6,7 @@ class bdii::params {
   $slapdconf            = hiera('bdii::params::slapdconf','/etc/bdii/bdii-slapd.conf')
   $slapdconf_topbdii    = hiera('bdii::params::slapdconf','/etc/bdii/bdii-top-slapd.conf')
   $selinux              = hiera('bdii::params::selinux',false)
-  $firewall             = hiera('bdii::params::firewall',false)
+  $firewall             = hiera('bdii::params::firewall',true)
   $bdiipasswd           = hiera('bdii::params::bdiipasswd',randompass())
   $bdiihost             = hiera('bdii::params::bdiihost','somehost.example.com')
   $deletedelay          = hiera('bdii::params::deletedelay', '0')
