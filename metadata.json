@@ -1,10 +1,10 @@
 { 
  "summary": "Manages BDII servers",
-  "name": "CERNOps-bdii",
-  "author": "CERNOps",
-  "project_page": "https://github.com/cernops/puppet-bdii",
+  "name": "vokac-bdii",
+  "author": "vokac",
+  "project_page": "https://github.com/vokac/puppet-bdii",
   "version": "1.0.0",
-  "source": "https://github.com/cernops/puppet-bdii",
+  "source": "https://github.com/vokac/puppet-bdii",
   "license": "Apache-2.0",
   "dependencies": [
     {
