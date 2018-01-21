@@ -1,6 +1,6 @@
 { 
  "summary": "Manages BDII servers",
-  "name": "vokac-bdii",
+  "name": "CERNOps-bdii",
   "author": "vokac",
   "project_page": "https://github.com/vokac/puppet-bdii",
   "version": "1.0.0",
