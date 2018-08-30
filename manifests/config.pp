@@ -4,42 +4,37 @@ class bdii::config (
   $user         = $bdii::params::user,
   $slapdconf    = $bdii::params::slapdconf,
   $delete_delay = $bdii::params::bdiideletedelay,
-  $loglevel   = undef,
 ) inherits bdii::params {
 
       Class[bdii::install] -> Class[bdii::config]
 
       file {'/etc/bdii/bdii.conf':
-        content  => template('bdii/bdiiconf.erb'),
-        owner    => 'root',
-        group    => 'root',
-        mode     => '0644',
-        notify   => Class['bdii::service'],
-        loglevel => $loglevel,
+        content => template('bdii/bdiiconf.erb'),
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        notify  => Class['bdii::service'],
       }
 
       file { '/etc/bdii/gip':
-        ensure   => 'directory',
-        owner    => 'root',
-        group    => 'root',
-        mode     => '0755',
-        loglevel => $loglevel,
+        ensure => 'directory',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0755',
       }
 
       file { '/var/lib/bdii/db':
-        ensure   => 'directory',
-        owner    => 'ldap',
-        group    => 'ldap',
-        mode     => '0755',
-        loglevel => $loglevel,
+        ensure => 'directory',
+        owner  => 'ldap',
+        group  => 'ldap',
+        mode   => '0755',
       }
 
       file {'/etc/sysconfig/bdii':
-        content  => template('bdii/bdiisysconf.erb'),
-        owner    => 'root',
-        group    => 'root',
-        mode     => '0644',
-        loglevel => $loglevel,
+        content => template('bdii/bdiisysconf.erb'),
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
       }
 
       file_line{ 'slapd_threads':
