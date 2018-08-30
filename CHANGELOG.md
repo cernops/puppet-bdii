@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.1.0] 30 August 2018 - Steve Traylen <steve.traylen@cern.ch>
+
+- The firewall configuration can now be disabled, default it is 
+  still enabled.
+- syntax fixes.
+
 ## [v1.0.0] 24 November 2017 - Steve Traylen <steve.traylen@cern.ch>
 
 - Bump release to 1.0.0 as drop for for puppet 3.
