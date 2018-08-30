@@ -4,11 +4,11 @@ class bdii (
 
   case $::operatingsystem {
     'RedHat','SLC','SL','Scientific','CentOS':   {
-      include bdii::install
-      include bdii::service
-      include bdii::config
+      include ::bdii::install
+      include ::bdii::service
+      include ::bdii::config
       if ($manage_firewall) {
-        include bdii::firewall
+        include ::bdii::firewall
       }
   }
     default: {
