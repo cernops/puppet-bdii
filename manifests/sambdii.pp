@@ -1,4 +1,7 @@
-class bdii::sambdii inherits bdii::params {
+class bdii::sambdii (
+  $sitename = $bdii::params::sitename,
+  $sitebdiihost = $bdii::params::sitebdiihost,
+)inherits bdii::params {
 
   Class['bdii::config'] -> Class['bdii::sambdii']
 

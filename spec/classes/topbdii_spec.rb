@@ -13,11 +13,13 @@ require 'spec_helper'
 
 describe 'bdii::topbdii' do
   let(:hiera_config) { 'spec/hiera.yaml' }
+
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
         facts
       end
+
       case facts[:operatingsystemmajrelease]
       when '5'
         it { is_expected.to compile.with_all_deps }

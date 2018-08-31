@@ -6,7 +6,7 @@ class bdii::params {
   $selinux              = hiera('bdii::params::selinux',false)
   $bdiipasswd           = hiera('bdii::params::bdiipasswd',randompass())
   $bdiihost             = hiera('bdii::params::bdiihost','somehost.example.com')
-  $bdiideletedelay      = hiera('bdii::params::deletedelay', '0')
+  $delete_delay         = hiera('bdii::params::deletedelay', '0')
   $slapdthreads         = hiera('bdii::params::slapdthreads', '16')
   $slapdloglevel        = hiera('bdii::params::slapdloglevel', '0')
   # site specific stuff:

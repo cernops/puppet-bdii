@@ -1,4 +1,7 @@
-class bdii::topbdii inherits bdii::params {
+class bdii::topbdii (
+  $sitename = $bdii::params::sitename,
+  $sitebdiihost = $bdii::params::sitebdiihost,
+) inherits bdii::params {
 
   include ::bdii
 
