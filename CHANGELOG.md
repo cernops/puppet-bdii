@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.2.0] 31 August 2018 - Steve Traylen <steve.traylen@cern.ch>
+
+- Setting hiera variables `bdii::params::<parameter> is now considered deprecated
+  though they do still work currently.
+  Switch all settings to class paramameters or `bdii::<paramater>` or 
+  `bdii::sitebdii::<parameter>` for instance.
+
 ## [v1.1.0] 30 August 2018 - Steve Traylen <steve.traylen@cern.ch>
 
 - The firewall configuration can now be disabled, default it is 
