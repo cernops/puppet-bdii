@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.2.1] 31 August 2018 - Steve Traylen <steve.traylen@cern.ch>
+- Empty release for build problem
+
 ## [v1.2.0] 31 August 2018 - Steve Traylen <steve.traylen@cern.ch>
 
 - Setting hiera variables `bdii::params::<parameter> is now considered deprecated
