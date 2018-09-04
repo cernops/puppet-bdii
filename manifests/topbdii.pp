@@ -17,4 +17,11 @@ class bdii::topbdii (
       group   => 'root',
       mode    => '0644',
   }
+
+  file {'/etc/glite/glite-info-update-endpoints.conf':
+      content => template('bdii/glite-info-update-endpoints.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+  }
 }
