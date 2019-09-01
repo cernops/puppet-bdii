@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.3.0] 1 September 2019 - Petr Vokac <petr.vokac@cern.ch>
+- new templates and configuration parameters
+- allow to configure Top/Site BDII with hierra
+
 ## [v1.2.2] 31 August 2018 - Steve Traylen <steve.traylen@cern.ch>
 - Empty release for build problem
 
