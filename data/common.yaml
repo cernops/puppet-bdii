@@ -1,0 +1,59 @@
+---
+# daemon configuration
+#bdii::log_level: 'ERROR'
+#bdii::port: 2170
+#bdii::user: 'ldap'
+#bdii::slapdconf: '/etc/bdii/bdii-slapd.conf'
+#bdii::selinux: false
+bdii::firewall: true
+#bdii::bdiipasswd: 'secret'
+#bdii::bdiihost: 'somehost.example.com'
+#bdii::deletedelay: 0
+#bdii::slapdthreads: 16
+#bdii::slapdloglevel: 0
+bdii::ramsize: ~
+# site specific stuff
+#bdii::siteurls:
+#  - '# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid'
+#bdii::sitename: 'somesite'
+#bdii::sitebdiihost: 'somehost.example.com'
+#bdii::sitedesc: 'somesite descr'
+#bdii::siteweb: 'www.somesite.example.com'
+#bdii::sitedistributed: ''
+#bdii::siteloc: ''
+#bdii::sitecountry: 'somecountry'
+#bdii::sitelat: ''
+#bdii::sitelong: ''
+#bdii::siteemail: ''
+#bdii::sitesecuritymail: ''
+#bdii::sitesupportemail: ''
+#bdii::config: 'puppet'
+#bdii::egeeroc: ''
+#bdii::egeeservice: 'prod'
+#bdii::grid: []
+#bdii::wlcgtier: ~
+#bdii::otherinfo: []
+# templates
+bdii::template_config: 'bdii/bdiiconf.erb'
+bdii::template_sysconfig: 'bdii/bdiisysconf.erb'
+bdii::template_slapd: 'bdii/bdii-slapd.conf.erb'
+bdii::template_glite: 'bdii/glite-info-site-defaults.erb'
+bdii::template_site: 'bdii/site.erb'
+bdii::template_site_urls: 'bdii/site_urls.erb'
+
+
+#
+# Top-BDII modifications
+#
+bdii::topbdii::slapdconf: '/etc/bdii/bdii-top-slapd.conf'
+bdii::topbdii::deletedelay: 345600
+bdii::topbdii::slapdthreads: 64
+bdii::topbdii::ramsize: '2000M'
+bdii::topbdii::template_slapd: 'bdii/bdii-top-slapd.conf.erb'
+
+
+#
+# Site-BDII modifications
+#
+bdii::sitebdii::ramsize: '500M'
+bdii::sitebdii::template_glite: 'bdii/glite-info-site-defaults-site.erb'

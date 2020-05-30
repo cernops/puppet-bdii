@@ -1,58 +1,64 @@
 class bdii::topbdii (
   # daemon configuration
-  $log_level            = $bdii::params::log_level,
-  $port                 = $bdii::params::port,
-  $user                 = $bdii::params::user,
-  $slapdconf            = $bdii::params::slapdconf_topbdii,
-  $selinux              = $bdii::params::selinux,
-  $firewall             = $bdii::params::firewall,
-  $bdiipasswd           = $bdii::params::bdiipasswd,
-  $deletedelay          = $bdii::params::deletedelay_topbdii,
-  $slapdthreads         = $bdii::params::slapdthreads_topbdii,
-  $slapdloglevel        = $bdii::params::slapdloglevel,
-  $ramsize              = $bdii::params::ramsize_topbdii,
+  String $log_level               = bdii::topbdii::params('log_level'),
+  Stdlib::Port $port              = bdii::topbdii::params('port'),
+  String $user                    = bdii::topbdii::params('user'),
+  Stdlib::Absolutepath $slapdconf = bdii::topbdii::params('slapdconf'),
+  Boolean $selinux                = bdii::topbdii::params('selinux'),
+  Boolean $firewall               = bdii::topbdii::params('firewall'),
+  String $bdiipasswd              = bdii::topbdii::params('bdiipasswd'),
+  Integer $deletedelay            = bdii::topbdii::params('deletedelay'),
+  Integer $slapdthreads           = bdii::topbdii::params('slapdthreads'),
+  Integer $slapdloglevel          = bdii::topbdii::params('slapdloglevel'),
+  Optional[String] $ramsize       = bdii::topbdii::params('ramsize'),
   # site specific stuff
-  $bdiihost             = $bdii::params::bdiihost,
-  $sitebdiihost         = $bdii::params::sitebdiihost,
-  $sitename             = $bdii::params::sitename,
+  Stdlib::Host $bdiihost          = bdii::topbdii::params('bdiihost'),
+  String $sitename                = bdii::topbdii::params('sitename'),
   # templates
-  $template_config      = $bdii::params::template_config,
-  $template_sysconfig   = $bdii::params::template_sysconfig,
-  $template_slapd       = $bdii::params::template_slapd_topbdii,
-  $template_glite       = $bdii::params::template_glite,
+  String $template_config         = bdii::topbdii::params('template_config'),
+  String $template_slapd          = bdii::topbdii::params('template_slapd'),
+  String $template_sysconfig      = bdii::topbdii::params('template_sysconfig'),
+  String $template_glite          = bdii::topbdii::params('template_glite'),
 ) inherits ::bdii::params {
 
   class { '::bdii':
-    log_level           => $log_level,
-    port                => $port,
-    user                => $user,
-    slapdconf           => $slapdconf,
-    selinux             => $selinux,
-    firewall            => $firewall,
-    bdiipasswd          => $bdiipasswd,
-    deletedelay         => $deletedelay,
-    slapdthreads        => $slapdthreads,
-    slapdloglevel       => $slapdloglevel,
-    ramsize             => $ramsize,
-    bdiihost            => $bdiihost,
-    sitename            => $sitename,
-    template_config     => $template_config,
-    template_sysconfig  => $template_sysconfig,
-    template_slapd      => $template_slapd,
-    template_glite      => $template_glite,
+    log_level          => $log_level,
+    port               => $port,
+    user               => $user,
+    slapdconf          => $slapdconf,
+    selinux            => $selinux,
+    firewall           => $firewall,
+    bdiipasswd         => $bdiipasswd,
+    deletedelay        => $deletedelay,
+    slapdthreads       => $slapdthreads,
+    slapdloglevel      => $slapdloglevel,
+    ramsize            => $ramsize,
+    template_config    => $template_config,
+    template_slapd     => $template_slapd,
+    template_sysconfig => $template_sysconfig,
   }
 
   Class['bdii::config'] -> Class['bdii::topbdii']
 
   package { 'emi-bdii-top':
-          ensure => 'present',
-      }
+    ensure   => 'present',
+  }
 
   file {'/etc/bdii/gip/glite-info-site-defaults.conf':
-      content => template($template_glite),
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-      notify   => Class['bdii::service'],
+    content => template($template_glite),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    notify  => Class['bdii::service'],
   }
+}
+
+
+# extract parameter from hiera configuration and prefer bdii::params::
+# to ensure compatibility with older version of puppet BDII module
+function bdii::topbdii::params(String $name) {
+  lookup({
+    'name' => "bdii::${name}",
+    'default_value' => getvar("bdii::params::${name}"),
+  })
 }

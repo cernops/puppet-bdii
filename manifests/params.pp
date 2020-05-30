@@ -1,50 +1,39 @@
+# This file is here only to keep compatibility with older versions
+# of puppet BDII module. Don't use this file and don't use bdii::params::*
+# in hiera configuration. See data/common.yaml for proper hieara
+# configuration parameters name:
+# * bdii::"name" for BDII class
+# * bdii::sitebdii::"name" for Site-BDII class
+# * bdii::topbdii::"name" for Top-BDII class
 class bdii::params {
-  # daemon configuration
-  $log_level            = hiera('bdii::params::log_level','ERROR')
-  $port                 = hiera('bdii::params::port','2170')
-  $user                 = hiera('bdii::params::user','ldap')
-  $slapdconf            = hiera('bdii::params::slapdconf','/etc/bdii/bdii-slapd.conf')
-  $slapdconf_topbdii    = hiera('bdii::params::slapdconf','/etc/bdii/bdii-top-slapd.conf')
-  $selinux              = hiera('bdii::params::selinux',false)
-  $firewall             = hiera('bdii::params::firewall',true)
-  $bdiipasswd           = hiera('bdii::params::bdiipasswd',randompass())
-  $bdiihost             = hiera('bdii::params::bdiihost','somehost.example.com')
-  # use also bdii::params::delete_delay for compatibility with 1.2.2 module version
-  $deletedelay          = hiera('bdii::params::deletedelay', hiera('bdii::params::delete_delay', '0'))
-  $deletedelay_topbdii  = hiera('bdii::params::deletedelay', '345600')
-  $slapdthreads         = hiera('bdii::params::slapdthreads', '16')
-  $slapdthreads_topbdii = hiera('bdii::params::slapdthreads', '64')
-  $slapdloglevel        = hiera('bdii::params::slapdloglevel', '0')
-  $ramsize              = hiera('bdii::params::ramsize', undef)
-  $ramsize_sitebdii     = hiera('bdii::params::ramsize', '500M')
-  $ramsize_topbdii      = hiera('bdii::params::ramsize', '2000M')
-  # site specific stuff
-  $siteurls             = hiera('bdii::params::siteurls',['# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid'])
-  $sitename             = hiera('bdii::params::sitename','somesite')
-  $sitebdiihost         = hiera('bdii::params::sitebdiihost','somehost.example.com')
-  $sitedesc             = hiera('bdii::params::sitedesc','somesite descr')
-  $siteweb              = hiera('bdii::params::siteweb','www.somesite.example.com')
-  $sitedistributed      = hiera('bdii::params::sitedistributed','')
-  $siteloc              = hiera('bdii::params::siteloc','')
-  $sitecountry          = hiera('bdii::params::sitecountry','somecountry')
-  $sitelat              = hiera('bdii::params::sitelat','')
-  $sitelong             = hiera('bdii::params::sitelong','')
-  $siteemail            = hiera('bdii::params::siteemail','')
-  $sitesecuritymail     = hiera('bdii::params::sitesecuritymail','')
-  $sitesupportemail     = hiera('bdii::params::sitesupportemail','')
-  $config               = hiera('bdii::params::config','puppet')
-  $egeeroc              = hiera('bdii::params::egeeroc','')
-  $egeeservice          = hiera('bdii::params::egeeservice','prod')
-  $grid                 = hiera('bdii::params::grid',[])
-  $wlcgtier             = hiera('bdii::params::wlcgtier','')
-  $otherinfo            = hiera('bdii::params::otherinfo',[]) #could be WLCG_PARENT=stuff
-  # templates
-  $template_config      = hiera('bdii::params::template_config', 'bdii/bdiiconf.erb')
-  $template_sysconfig   = hiera('bdii::params::template_sysconfig', 'bdii/bdiisysconf.erb')
-  $template_slapd       = hiera('bdii::params::template_config', 'bdii/bdii-slapd.conf.erb')
-  $template_slapd_topbdii = hiera('bdii::params::template_config', 'bdii/bdii-top-slapd.conf.erb')
-  $template_glite       = hiera('bdii::params::template_glite', 'bdii/glite-info-site-defaults.erb')
-  $template_glite_sitebdii = hiera('bdii::params::template_glite', 'bdii/glite-info-site-defaults-site.erb')
-  $template_site        = hiera('bdii::params::template_site', 'bdii/site.erb')
-  $template_site_urls   = hiera('bdii::params::template_site_urls', 'bdii/site_urls.erb')
+  $log_level            = lookup('bdii::params::log_level', undef, undef, 'ERROR')
+  $port                 = lookup('bdii::params::port', undef, undef, 2170)
+  $user                 = lookup('bdii::params::user', undef, undef, 'ldap')
+  $slapdconf            = lookup('bdii::params::slapdconf', undef, undef, '/etc/bdii/bdii-slapd.conf')
+  $selinux              = lookup('bdii::params::selinux', undef, undef, false)
+  $bdiipasswd           = lookup('bdii::params::bdiipasswd', undef, undef, randompass())
+  $bdiihost             = lookup('bdii::params::bdiihost', undef, undef, 'somehost.example.com')
+  $deletedelay          = lookup('bdii::params::deletedelay', undef, undef, 0)
+  $slapdthreads         = lookup('bdii::params::slapdthreads', undef, undef, 16)
+  $slapdloglevel        = lookup('bdii::params::slapdloglevel', undef, undef, 0)
+  # site specific stuff:
+  $siteurls             = lookup('bdii::params::siteurls', undef, undef, '# DUMMY  ldap://localhost:2170/mds-vo-name=resource,o=grid')
+  $sitename             = lookup('bdii::params::sitename', undef, undef, 'somesite')
+  $sitebdiihost         = lookup('bdii::params::sitebdiihost', undef, undef, 'somehost.example.com')
+  $sitedesc             = lookup('bdii::params::sitedesc', undef, undef, 'somesite descr')
+  $siteweb              = lookup('bdii::params::siteweb', undef, undef, 'www.somesite.example.com')
+  $sitedistributed      = lookup('bdii::params::sitedistributed', undef, undef, '')
+  $siteloc              = lookup('bdii::params::siteloc', undef, undef, '')
+  $sitecountry          = lookup('bdii::params::sitecountry', undef, undef, 'somecountry')
+  $sitelat              = lookup('bdii::params::sitelat', undef, undef, '')
+  $sitelong             = lookup('bdii::params::sitelong', undef, undef, '')
+  $siteemail            = lookup('bdii::params::siteemail', undef, undef, '')
+  $sitesecuritymail     = lookup('bdii::params::sitesecuritymail', undef, undef, '')
+  $sitesupportemail     = lookup('bdii::params::sitesupportemail', undef, undef, '')
+  $config               = lookup('bdii::params::config', undef, undef, 'puppet')
+  $egeeroc              = lookup('bdii::params::egeeroc', undef, undef, '')
+  $egeeservice          = lookup('bdii::params::egeeservice', undef, undef, 'prod')
+  $grid                 = lookup('bdii::params::grid', undef, undef, '')
+  $wlcgtier             = lookup('bdii::params::wlcgtier', undef, undef, '')
+  $otherinfo            = lookup('bdii::params::otherinfo', undef, undef, []) #could be WLCG_PARENT=stuff
 }
