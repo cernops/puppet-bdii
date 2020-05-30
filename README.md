@@ -29,7 +29,7 @@ defaults in params.pp if this is more convenient.
  * `port` defaults to `2170`
  * `user`  defaults `ldap`
  * `slapdconf` defaults to `/etc/bdii/bdii/bdii-slapd.conf`
- * `delete_delay` defaults to `/deleted
+ * `deletedelay` defaults to `0` (no delay)
  * `$selinux` defaults to `true`
 
 

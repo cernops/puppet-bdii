@@ -1,24 +1,32 @@
 class bdii (
-  $manage_firewall = true,
-  $log_level    = $bdii::params::log_level,
-  $port         = $bdii::params::port,
-  $user         = $bdii::params::user,
-  $slapdconf    = $bdii::params::slapdconf,
-  $delete_delay = $bdii::params::delete_delay,
-  $selinux      = $bdii::params::selinux,
-) inherits bdii::params {
+  # daemon configuration
+  String $log_level               = $bdii::params::log_level,
+  Stdlib::Port $port              = $bdii::params::port,
+  String $user                    = $bdii::params::user,
+  Stdlib::Absolutepath $slapdconf = $bdii::params::slapdconf,
+  Boolean $selinux                = $bdii::params::selinux,
+  Boolean $firewall,
+  String $bdiipasswd              = $bdii::params::bdiipasswd,
+  Integer $deletedelay            = $bdii::params::deletedelay,
+  Integer $slapdthreads           = $bdii::params::slapdthreads,
+  Integer $slapdloglevel          = $bdii::params::slapdloglevel,
+  Optional[String] $ramsize,
+  # templates
+  String $template_config,
+  String $template_slapd,
+  String $template_sysconfig,
+) inherits ::bdii::params {
 
-  case $::operatingsystem {
-    'RedHat','SLC','SL','Scientific','CentOS':   {
-      include ::bdii::install
-      include ::bdii::service
-      include ::bdii::config
-      if ($manage_firewall) {
-        include ::bdii::firewall
-      }
+  contain ::bdii::install
+  contain ::bdii::service
+  if $firewall {
+    contain ::bdii::firewall
+    Class['::bdii::firewall'] -> Class['::bdii::config']
   }
-    default: {
-              # There is some fedora configuration present but I can't actually get it to work.
-    }
-  }
+  contain ::bdii::config
+
+  Class['::bdii::install']
+  -> Class['::bdii::config']
+  ~> Class['::bdii::service']
+
 }

@@ -7,7 +7,10 @@ EOS
     $allowed = []
     ('!'..'Z').each { |c| $allowed << c }
     ('a'..'z').each { |c| $allowed << c }
+    $allowed.delete('#')
     $allowed.delete(',')
+    $allowed.delete('"')
+    $allowed.delete('\'')
     value = ''
     $length.times { value << $allowed[rand($allowed.length)] }
     return value

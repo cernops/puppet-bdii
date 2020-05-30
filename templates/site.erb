@@ -37,7 +37,9 @@ OTHERINFO = EGEE_SERVICE=<%= @egeeservice %>
 <% @grid.each do |g| -%>
 OTHERINFO = GRID=<%= g %>
 <% end -%>
+<% if @wlcgtier -%>
 OTHERINFO = WLCG_TIER=<%= @wlcgtier %>
+<% end -%>
 
 #free other info
 <% @otherinfo.each do |o| -%>
